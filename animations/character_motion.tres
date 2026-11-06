@@ -1,0 +1,40 @@
+[gd_resource type="AnimationLibrary" load_steps=3 format=3]
+
+[sub_resource type="Animation" id="Animation_breathe"]
+resource_name = "breathe"
+length = 2.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_pulse")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bounce"]
+resource_name = "bounce"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_pulse")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.32, 0.56, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 2.8, -2.0, 1.5, 0.0]
+}
+
+[resource]
+_data = {
+"bounce": SubResource("Animation_bounce"),
+"breathe": SubResource("Animation_breathe")
+}

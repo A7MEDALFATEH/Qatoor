@@ -1,0 +1,32 @@
+; Qatoor — a completely standalone Godot 4 exhibition project.
+config_version=5
+
+[application]
+config/name="QATOOR — The Interactive Journey of a Crude Oil Drop"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/description="رحلة قطرة النفط: من أعماق الأرض إلى السطح — an animated, interactive petroleum engineering exhibition."
+config/icon="res://assets/icon.svg"
+
+[display]
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/size/min_width=960
+window/size/min_height=540
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+environment/defaults/default_clear_color=Color(0.025, 0.052, 0.09, 1)
+
+[audio]
+driver/enable_input=false
+
+[internationalization]
+rendering/text_driver="Advanced (TextServerAdvanced)"
+
