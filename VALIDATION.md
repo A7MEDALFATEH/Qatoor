@@ -22,3 +22,10 @@ godot --headless --path . --script res://tests/run_checks.gd
 ```
 
 Rendering was checked with Mesa software OpenGL in the development environment. Audio synthesis and playback resources were exercised with a dummy audio driver; speaker output and performance on the target exhibition laptop remain hardware checks. No Windows executable is included; open `project.godot` and press F5, or export using matching Godot templates.
+
+
+## University Day update — 8 November 2026
+
+Godot 4.6.3: **119/119 integration checks passed**, including the new marine route, all original routes, scientific model behavior, automatic playback, quiz and navigation. Rendered the new title and marine scene with GL Compatibility at 3840×2160. Twenty additional opening checks passed, covering all four student names, supervisor, label bounds, logo dimensions, and navigation into the original journey. Original engineering model, character scenes, and existing chapter scene resources were preserved.
+
+The supplied Word document's university/college images were extracted without redrawing institutional marks. The user confirmed the first name is continuous and requested two additional students: Bahaa Khalid Abd-Allah and Zakaria Salah Al-Deen. Actual audio output and projector performance must be checked on the exhibition computer; automated playback uses a dummy audio device.

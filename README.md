@@ -32,7 +32,7 @@ Use the mouse or a touchscreen to press the large on-screen controls. The intera
 
 The header and pause/settings interface also provide exhibition controls. Engineering data starts hidden so the story remains central. Sound can be muted without interrupting the experience.
 
-Choose **Start Journey** for audience participation, or **Watch the Movie** for a shared-scene cinematic demonstration lasting about three minutes. Automatic mode operates the story's controls and makes the correct educational choices. The finale offers restart, automatic replay, and a three-question knowledge quiz. Product animations return to product selection so visitors can explore all four routes.
+Choose **Start Journey** for audience participation, or **Watch the Movie** for a shared-scene cinematic demonstration lasting about three minutes. Automatic mode operates the story's controls and makes the correct educational choices. The finale offers restart, automatic replay, and a three-question knowledge quiz. Product animations return to product selection so visitors can explore all five routes.
 
 ## The journey
 
@@ -64,3 +64,29 @@ To rerun the integration checks from a fresh copy:
 godot --headless --path . --editor --quit
 godot --headless --path . --script res://tests/run_checks.gd
 ```
+
+
+## University Day edition
+
+F5 opens the institutional title card. Its title, student and supervisor text is transcribed from the supplied QATOOR.docx. The first student-name line is retained verbatim as confirmed by the user. Bahaa Khalid Abd-Allah and Zakaria Salah Al-Deen were added as the third and fourth names at the user’s request. University and College of Engineering logos are the original embedded images; their source resolution is unchanged.
+
+- Open `scenes/opening_title.tscn` and press F6 to display the opening separately. Press **T** during the journey to return to it.
+- `presentation/QATOOR-opening-4K.png` and `QATOOR-opening-FullHD.png` are separate presentation images (3840×2160 and 1920×1080).
+- Fullscreen (**F11**) uses the display resolution with vector artwork and scalable text. 4K requires a 4K display/output. Embedded logos retain the detail available in Word.
+- A fifth refinery route, **Marine fuel**, shows bunkering and a detailed animated container ship, alongside a car and aircraft. All original four routes and seven chapters remain.
+- Generated sound effects now use 48 kHz PCM with short onset/release ramps to reduce clicks. There is no recorded voice narration.
+
+For a standalone title without buttons:
+
+```sh
+godot --path . -- --title-only
+```
+
+Godot Movie Maker can record the complete automatic presentation at Full HD or 4K (large AVI output; use a suitable drive):
+
+```sh
+godot --path . --resolution 1920x1080 --write-movie QATOOR.avi --fixed-fps 60 -- --movie
+# For 4K, replace 1920x1080 with 3840x2160.
+```
+
+Stop recording after the finale. This repository provides the project and title PNGs, not a pre-rendered full-length 4K video or a Windows executable.

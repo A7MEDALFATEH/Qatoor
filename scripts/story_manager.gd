@@ -18,7 +18,7 @@ const SCENES: Dictionary = {
 	"finale": "res://scenes/finale.tscn",
 	"quiz": "res://scenes/quiz.tscn"
 }
-const PRODUCT_ORDER: Array[String] = ["car", "aviation", "plastic", "asphalt"]
+const PRODUCT_ORDER: Array[String] = ["car", "aviation", "marine", "plastic", "asphalt"]
 const PHASE_ORDER: Array[String] = ["oil", "gas", "water"]
 const OUTLETS: Dictionary = {"oil": Vector2(1640, 480), "gas": Vector2(1590, 280), "water": Vector2(1640, 670)}
 
@@ -383,7 +383,7 @@ func _update_actions() -> void:
 			if state.product != "":
 				actions = [{"id":"wait", "label":"Following the product journey…", "disabled":true}]
 			else:
-				actions = [{"id":"product_car", "label":"Car fuel"}, {"id":"product_aviation", "label":"Aviation fuel", "secondary":true}, {"id":"product_plastic", "label":"Plastic products", "secondary":true}, {"id":"product_asphalt", "label":"Asphalt", "secondary":true}]
+				actions = [{"id":"product_car", "label":"Car fuel"}, {"id":"product_aviation", "label":"Aviation fuel", "secondary":true}, {"id":"product_marine", "label":"Marine fuel", "secondary":true}, {"id":"product_plastic", "label":"Plastic products", "secondary":true}, {"id":"product_asphalt", "label":"Asphalt", "secondary":true}]
 				if products_seen.size() > 0:
 					actions.append({"id":"finish", "label":"Finale   →"})
 		"finale":
@@ -567,7 +567,7 @@ func _automatic_step() -> void:
 			if state.completed and stage_clock >= 25.0: _on_action("refine")
 		"refinery":
 			if stage_clock > 7.0 and not interaction_locked:
-				if products_seen.size() < 4:
+				if products_seen.size() < PRODUCT_ORDER.size():
 					_on_action("product_" + PRODUCT_ORDER[products_seen.size()])
 				else:
 					_on_action("finish")
@@ -595,6 +595,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		return
 	match event.keycode:
 		KEY_ESCAPE: _on_toolbar("pause")
+		KEY_T: get_tree().change_scene_to_file("res://scenes/opening_title.tscn")
 		KEY_M: _on_toolbar("sound")
 		KEY_D: ui.toggle_data()
 		KEY_R: _on_action("restart")

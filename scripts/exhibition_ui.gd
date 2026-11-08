@@ -357,6 +357,8 @@ func set_actions(items: Array) -> void:
 		var button := _button(str(entry.get("label", "CONTINUE")), str(entry.get("id", "next")), bool(entry.get("secondary", false)))
 		button.disabled = bool(entry.get("disabled", false))
 		button.custom_minimum_size.x = float(entry.get("width", 194))
+		if items.size() >= 6:
+			button.add_theme_font_size_override("font_size", 20)
 		_actions.add_child(button)
 	_actions.visible = not items.is_empty()
 

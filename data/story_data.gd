@@ -76,11 +76,12 @@ const STAGES: Dictionary = {
 		"title": "One resource.\nSo many possibilities.",
 		"title_ar": "من النفط إلى حياتنا اليومية",
 		"eyebrow": "06 / REFINING & EVERYDAY MATERIALS",
-		"description": "Explore four destinations. Refineries separate and process crude; petrochemical plants turn selected feedstocks into materials.",
+		"description": "Explore five destinations. Refineries separate and process crude; petrochemical plants turn selected feedstocks into materials.",
 		"dialogue": "رحلتي لم تنتهِ بعد! تعالج المصافي النفط لتنتج أنواعاً من الوقود والمواد الأولية. وتحوّل مصانع البتروكيماويات بعض هذه المواد عبر مراحل صناعية إلى البلاستيك.",
 		"fact": "Refining and petrochemical manufacturing are different industrial stages.",
 		"products": {
 			"car": {"title": "Fuel for the road", "caption": "Refining → fuel distribution → refuelling → transport", "dialogue": "بعد التكرير والمعالجة، يُنقل وقود السيارات إلى محطات التعبئة. انظروا، سيارتنا جاهزة للانطلاق!"},
+			"marine": {"title": "Across the oceans", "caption": "Refining & fuel specifications → bunkering → marine engines", "dialogue": "تستخدم سفن كثيرة وقوداً مشتقاً من النفط بعد التكرير والمعالجة ومطابقة المواصفات. يُزوَّد الوقود في الميناء لتشغيل المحركات البحرية؛ ولا يُستخدم النفط الخام مباشرة. تختلف أنواع الوقود باختلاف المحرك واللوائح البيئية."},
 			"aviation": {"title": "Ready for take-off", "caption": "Refining & specification checks → airport supply → aircraft", "dialogue": "وقود الطائرات يُكرَّر ويُعالَج ليلائم مواصفات دقيقة، ثم يُنقل إلى المطار. هيا نحو السماء!"},
 			"plastic": {"title": "A new material takes shape", "caption": "Petroleum feedstock → petrochemical processing → polymers → moulding", "dialogue": "النفط لا يتحول مباشرة إلى بلاستيك! نحتاج إلى مواد أولية بتروكيماوية، ثم عمليات صناعية وبلمرة وتشكيل لصناعة المنتج."},
 			"asphalt": {"title": "Building the road ahead", "caption": "Refinery bitumen → mixing with aggregate → paving", "dialogue": "يُخلَط البيتومين الناتج من معالجة بعض أنواع النفط مع الركام لصناعة الخلطة الإسفلتية. ها هي الطريق تظهر أمامنا!"}

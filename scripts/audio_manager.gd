@@ -8,7 +8,7 @@ var _streams: Dictionary = {}
 var _ambience: AudioStreamPlayer
 var _current_ambience: String = ""
 var _next_player: int = 0
-const SAMPLE_RATE: int = 22050
+const SAMPLE_RATE: int = 48000
 
 func _ready() -> void:
 	for i in range(5):
@@ -92,6 +92,8 @@ func _synthesize(cue: String) -> AudioStreamWAV:
 			var note: int = mini(int(p * notes.size()), notes.size() - 1)
 			var local: float = fmod(p * notes.size(), 1.0)
 			value = (sin(TAU * notes[note] * t) + 0.15 * sin(TAU * notes[note] * 2.0 * t)) * sin(PI * local) * 0.4
+		if not ambient:
+			value *= minf(1.0, t / 0.006) * minf(1.0, (duration - t) / 0.012)
 		pcm.encode_s16(i * 2, int(clampf(value, -1.0, 1.0) * 32760.0))
 	var stream := AudioStreamWAV.new()
 	stream.format = AudioStreamWAV.FORMAT_16_BITS

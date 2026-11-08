@@ -190,7 +190,7 @@ func _run_story_checks() -> void:
 	_check(experience.stage_key == "refinery", "separated oil reaches later refining and petrochemistry")
 	await _tick(0.3)
 	_check(is_zero_approx(float(experience.model.snapshot().depth)), "surface engineering data stays at zero depth after separation")
-	for product in ["car", "aviation", "plastic", "asphalt"]:
+	for product in ["car", "aviation", "marine", "plastic", "asphalt"]:
 		await _act("product_" + product)
 		_check(experience.state.product == product and experience.interaction_locked, product + " begins its distinct animated processing journey")
 		await _tick(4.0)
@@ -238,7 +238,7 @@ func _run_story_checks() -> void:
 	_check(experience.stage_key == "finale", "automatic movie completes without user story decisions")
 	for stage in ["reservoir", "drilling", "pressure", "race", "separator", "refinery", "finale"]:
 		_check(visited.has(stage), "automatic presentation includes " + stage)
-	_check(experience.products_seen.size() == 4, "automatic presentation explores all four product stories")
+	_check(experience.products_seen.size() == 5, "automatic presentation explores all five product stories")
 	_check(simulation_time >= 120.0 and simulation_time <= 180.0, "automatic movie timing stays within approximately two to three minutes")
 	await _act("menu")
 	_check(experience.stage_key == "menu" and not experience.auto_mode, "automatic mode exits cleanly to the main menu")

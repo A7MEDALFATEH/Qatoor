@@ -163,6 +163,7 @@ func _refinery() -> void:
 		match product:
 			"car": _car_story(progress)
 			"aviation": _aviation_story(progress)
+			"marine": _marine_story(progress)
 			"plastic": _plastic_story(progress)
 			"asphalt": _asphalt_story(progress)
 
@@ -455,3 +456,45 @@ func _label(value: String, pos: Vector2, size: int, tint: Color) -> void:
 
 func label_center(value: String, pos: Vector2, size: int, tint: Color) -> void:
 	if font: draw_string(font, pos - Vector2(font.get_string_size(value, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x / 2, 0), value, HORIZONTAL_ALIGNMENT_LEFT, -1, size, tint)
+
+func _marine_story(p: float) -> void:
+	_label("MARINE FUEL  →  BUNKERING  →  SEA TRANSPORT", Vector2(786, 530), 17, GOLD)
+	# Car and aircraft keep all three petroleum transport applications in view.
+	_car(Vector2(849, 574), 0.28, CYAN)
+	_plane(Vector2(1630, 560), 0.36, -0.05)
+	for band in range(9):
+		draw_rect(Rect2(771, 627 + band * 10, 988, 10), Color("183e56").lerp(Color("0c263d"), band / 8.0))
+	for i in range(17):
+		var x: float = 780 + fmod(i * 61.0 - clock * 18, 970)
+		draw_line(Vector2(x, 667 + (i % 4) * 11), Vector2(x + 36, 667 + (i % 4) * 11), Color(0.4, 0.76, 0.86, 0.25), 2, true)
+	var departure: float = smoothstep(0.38, 1.0, p) * 230
+	_ship(Vector2(1180 + departure, 650 + sin(clock * 1.2) * 1.4))
+	if p < 0.4:
+		draw_rect(Rect2(784, 610, 92, 44), Color("7a8b92"))
+		_polyline([Vector2(846, 610), Vector2(846, 590), Vector2(1000, 590), Vector2(1000, 616)], GOLD, 5)
+		_draw_flow([Vector2(846, 610), Vector2(846, 590), Vector2(1000, 590), Vector2(1000, 616)], CYAN, 0.7)
+	_label("Refined fuel • engine-specific specifications", Vector2(1000, 711), 17, WHITE)
+
+func _ship(pos: Vector2) -> void:
+	# Side elevation: displacement hull, bulbous bow, deck cargo and aft bridge.
+	draw_set_transform(pos, 0.0, Vector2(0.85, 0.85))
+	_poly([Vector2(-225,-17),Vector2(234,-17),Vector2(208,10),Vector2(172,29),Vector2(-194,29),Vector2(-216,10)],Color("a8483e"))
+	_poly([Vector2(-225,-17),Vector2(234,-17),Vector2(218,1),Vector2(-216,1)],Color("1c2637"))
+	draw_line(Vector2(-216,-19),Vector2(226,-19),WHITE,3,true)
+	for row in range(2):
+		for col in range(6):
+			var tint: Color = [Color("b16b48"),Color("528d98"),Color("bdab78")][(row+col)%3]
+			draw_rect(Rect2(-102+col*45,-43-row*24,43,22),tint)
+			for rib in range(4): draw_line(Vector2(-98+col*45+rib*10,-41-row*24),Vector2(-98+col*45+rib*10,-24-row*24),tint.darkened(0.2),1,true)
+	draw_rect(Rect2(-191,-78,69,59),Color("dce4dc"))
+	draw_rect(Rect2(-198,-87,83,17),Color("e9eee5"))
+	for i in range(6): draw_rect(Rect2(-192+i*12,-84,9,9),Color("244855"))
+	draw_rect(Rect2(-170,-105,14,18),Color("c8874e"))
+	draw_line(Vector2(-133,-87),Vector2(-133,-121),WHITE,2,true)
+	draw_line(Vector2(-148,-110),Vector2(-119,-110),WHITE,2,true)
+	for x in range(-211,220,23): draw_line(Vector2(x,-19),Vector2(x,-29),Color("acb9b4"),1,true)
+	draw_line(Vector2(-211,-29),Vector2(219,-29),Color("acb9b4"),1,true)
+	draw_circle(Vector2(200,-24),3,Color("8ce7b2"))
+	_label("QATOOR",Vector2(-49,17),13,WHITE)
+	for i in range(4): draw_arc(Vector2(-230-i*16,30),Vector2(15+i*7,15+i*7).x,3.3,5.9,16,Color(0.72,0.88,0.9,0.25),2,true)
+	draw_set_transform(Vector2.ZERO)
